@@ -1,26 +1,35 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
-import { Route, RouterModule, Routes } from '@angular/router';
-import { DashboardComponent, RightsComponent, UserComponent } from './admin';
-
+import { RouterModule, Routes } from '@angular/router';
+import { HomeModule } from './home';
+import { MaterialModule,SharedModule } from "./shared";
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
+import { HomeRoutingModule } from './home/home-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropdownMenuComponent } from "./shared/layouts/dropdown-menu/dropdown-menu.component";
 
-const routes: Routes = [
-  {path: 'user', component:UserComponent},
-  {path:'rights', component:RightsComponent},
-  {path: 'dashboard', component:DashboardComponent}
-]
-
+import { authInterceptorProviders } from './helpers/auth.interceptor';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DropdownMenuComponent, 
   ],
   imports: [
     BrowserModule,
-    RouterModule.forChild(routes)
+    CommonModule,
+    HomeModule,
+    MaterialModule,
+    SharedModule,
+    HomeRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,  
   ],
   exports:[RouterModule],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
