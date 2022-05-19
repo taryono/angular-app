@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { MenuIndex,MenuItem } from './shared/layouts/dropdown-menu/dropdown-menu.component';
+import { AuthService } from './services/auth.service';
+import { TokenStorageService } from './services/token-storage.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-app';
+  title = 'angular-app'; 
   public menuOpened = false;
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
   public investmentClasses: MenuItem[] = [
     {
       icon: "euro_symbol",
@@ -62,5 +65,14 @@ export class AppComponent {
       this.investmentClasses[menuIndex.menuIndex]
           .subMenu[menuIndex.submenuIndex].value
     );
+  }
+
+  public isLoggedIn(): boolean {
+    return this.tokenStorage.getToken() ? true : false;
+  }
+
+  public logout(){
+    this.tokenStorage.signOut();
+    window.location.reload();
   }
 }

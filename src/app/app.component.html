@@ -306,10 +306,9 @@
     <span>Welcome</span> &nbsp;
     <span>
         <a routerLink="/" routerLinkActive="active">Home</a>&nbsp;
-        <a routerLink="/contactus" routerLinkActive="active">Contact US</a>&nbsp;
-        <a routerLink="/aboutus" routerLinkActive="active">About Us</a>&nbsp;
-        <a routerLink="/register" routerLinkActive="active">Register </a>&nbsp;
-        <a routerLink="/login" routerLinkActive="active">Login</a>&nbsp;
+        <a *ngIf="!isLoggedIn()"  routerLink="/contactus" routerLinkActive="active">Contact US</a>&nbsp;
+        <a *ngIf="!isLoggedIn()"  routerLink="/aboutus" routerLinkActive="active">About Us</a>&nbsp;
+         
     </span>&nbsp;
     <!-- <div class="menu-container" (click)="menuOpened = true" (mouseenter)="menuOpened = true" (mouseleave)="menuOpened = false">
         <span>Menu</span>
@@ -328,6 +327,10 @@
         <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/>
       </svg>
     </a>
+    <a *ngIf="!isLoggedIn()" routerLink="/register" routerLinkActive="active">Register </a>&nbsp;
+    <a *ngIf="!isLoggedIn()" routerLink="/login" routerLinkActive="active">Login</a>&nbsp;
+    <a *ngIf="isLoggedIn()" (click)="logout()" routerLink="/login" routerLinkActive="active">Logout</a>&nbsp;
+
 </div>
 
 <div class="content" role="main">
