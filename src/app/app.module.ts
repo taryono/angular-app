@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeRoutingModule } from './home/home-routing.module';
+import { LoginModule } from './login';
+import { RegisterModule } from './register';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownMenuComponent } from "./shared/layouts/dropdown-menu/dropdown-menu.component";
 
@@ -27,8 +29,10 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,  
+    LoginModule,
+    RegisterModule
   ],
-  exports:[RouterModule],
+  exports:[RouterModule, CommonModule, FormsModule, BrowserModule],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

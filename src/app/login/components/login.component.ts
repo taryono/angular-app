@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { TokenStorageService } from '../services/token-storage.service';
+import { AuthService } from '../../services/auth.service';
+import { TokenStorageService } from '../../services/token-storage.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +10,8 @@ import { TokenStorageService } from '../services/token-storage.service';
 export class LoginComponent implements OnInit {
   form: any = {
     username: null,
-    password: null
+    password: null,
+    submitted:false
   };
   isLoggedIn = false;
   isLoginFailed = false;
